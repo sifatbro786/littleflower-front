@@ -3,17 +3,19 @@ import Link from "next/link";
 
 import { getNotices } from "@/lib/data";
 
+import { Flower } from "../ui/Decor";
+
 /** Latest notices scrolling under the header (CSS-only marquee, pauses on hover/focus). */
 export default async function NoticeTicker() {
     const notices = await getNotices({ limit: 6 });
     if (!notices.length) return null;
     const items = [...notices, ...notices]; // duplicated for a seamless loop
     return (
-        <div className="relative z-10 border-b border-[#e9c63a] bg-sun text-ink">
+        <div className="relative z-10 border-b border-line bg-white text-ink">
             <div className="container-x flex h-11 items-center gap-3">
                 <Link
                     href="/notices"
-                    className="flex shrink-0 items-center gap-1.5 rounded-full bg-ink px-3 py-1 text-[12.5px] font-semibold tracking-wide text-sun uppercase"
+                    className="flex shrink-0 items-center gap-1.5 rounded-full bg-coral px-3 py-1 text-[12.5px] font-semibold tracking-wide text-white uppercase"
                 >
                     <Megaphone className="size-3.5" aria-hidden="true" />
                     Notice
@@ -27,7 +29,7 @@ export default async function NoticeTicker() {
                                     tabIndex={i >= notices.length ? -1 : undefined}
                                     className="flex items-center gap-2 text-[14.5px] font-medium whitespace-nowrap hover:underline"
                                 >
-                                    <span className="size-1.5 rounded-full bg-brand-deep" aria-hidden="true" />
+                                    <Flower className="size-3.5 text-sun" centre="var(--brand)" />
                                     {n.title}
                                 </Link>
                             </li>

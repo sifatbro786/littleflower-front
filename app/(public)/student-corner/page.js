@@ -2,8 +2,6 @@ import { CalendarDays, ClipboardList, Download, FileSearch, ScrollText } from "l
 import Link from "next/link";
 
 import PageHeader from "@/components/site/PageHeader";
-import Photo from "@/components/ui/Photo";
-import { img } from "@/content/media";
 import { getDownloads } from "@/lib/data";
 import { formatDate } from "@/lib/format";
 
@@ -67,23 +65,6 @@ export default async function StudentCornerPage() {
                     <span className="btn-sun w-max">Check result</span>
                 </Link>
 
-                <section className="grid items-center gap-8 lg:grid-cols-[1fr_1.2fr]">
-                    <div>
-                        <h2 className="h-section">Practice at home</h2>
-                        <p className="mt-3 text-[16.5px] leading-relaxed text-ink-soft">
-                            A few worksheets from class. Print them, or simply read the phonics sentences aloud together.
-                        </p>
-                    </div>
-                    <ul className="grid grid-cols-3 gap-3">
-                        {[img.drawingBoys, img.girlWriting, img.drawingCloseup].map((w) => (
-                            <li key={w.src}>
-                                <a href={w.src} target="_blank" rel="noopener noreferrer" className="block overflow-hidden rounded-lg border-4 border-white bg-white shadow-[0_16px_32px_-18px_rgba(21,36,27,.5)] transition-transform hover:-translate-y-1">
-                                    <Photo image={w} sizes="(min-width:1024px) 220px, 33vw" className="h-auto w-full" />
-                                </a>
-                            </li>
-                        ))}
-                    </ul>
-                </section>
             </div>
         </>
     );

@@ -1,89 +1,73 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Phone } from "lucide-react";
 import Link from "next/link";
 
 import { school } from "@/config/school";
 import { video } from "@/content/media";
 
-import { Swoosh } from "../ui/Decor";
+import { Flower, Seal } from "../ui/Decor";
 import HeroVideo from "./HeroVideo";
 
-const stages = [
-    { label: "Early Years", note: "Play Group · Nursery · KG", href: "/academics/classes#early" },
-    { label: "Primary", note: "Class I to Class V", href: "/academics/classes#primary" },
-];
-
 /**
- * Inset video hero (pattern from the reference: framed media, headline bottom-left, quick links right).
- * The video starts muted (autoplay rule) with a sound toggle; poster renders first so LCP is an image.
+ * Full-bleed hero: the campus video plays behind the words (muted, looping, pause button).
+ * A crest-brown wash on the left keeps the text readable; the poster renders first so LCP is an image.
  */
 export default function Hero() {
+    const h = school.home;
     return (
-        <section className="px-2 pt-2 sm:px-4 sm:pt-4" aria-labelledby="hero-title">
-            <div className="relative isolate overflow-hidden rounded-[1.75rem] bg-brand-deep sm:rounded-[2.25rem]">
-                <HeroVideo src={video.hero.src} poster={video.hero.poster} />
-                <div className="absolute inset-0 -z-10 hidden bg-linear-to-tr from-[#06321a]/95 via-[#0b4a27]/70 to-[#0b4a27]/10 lg:block" aria-hidden="true" />
+        <section className="relative isolate overflow-hidden bg-brand-deep text-white" aria-labelledby="hero-title">
+            <HeroVideo src={video.hero.src} poster={video.hero.poster} label={`${school.name} campus`} />
+            <div className="absolute inset-0 -z-10 bg-brand-deep/55" aria-hidden="true" />
+            <div className="absolute inset-0 -z-10 bg-linear-to-r from-brand-deep/90 via-brand-deep/60 to-transparent" aria-hidden="true" />
 
-                <div className="container-x grid items-end gap-10 pt-4 pb-8 sm:pb-12 lg:min-h-[min(80svh,760px)] lg:grid-cols-[1.5fr_1fr] lg:pb-16">
-                    <div className="max-w-3xl">
-                        <p className="inline-flex -rotate-1 items-center gap-2 rounded-full bg-sun px-3.5 py-1.5 text-[13.5px] font-semibold text-ink shadow-[0_3px_0_rgba(0,0,0,.25)]">
-                            <span className="relative flex size-2">
-                                <span className="absolute inline-flex size-full animate-ping rounded-full bg-brand opacity-70" />
-                                <span className="relative inline-flex size-2 rounded-full bg-brand" />
-                            </span>
-                            Admission going on · {school.levels}
-                        </p>
-                        <h1 id="hero-title" className="mt-6 text-[2.5rem] leading-[1.04] font-semibold tracking-tight text-white sm:text-6xl lg:text-[4rem]">
-                            A happy start in{" "}
-                            <span className="relative inline-block whitespace-nowrap text-sun">
-                                English
-                                <Swoosh className="absolute -bottom-2 left-0 h-3 w-full text-sun/70" />
-                            </span>
-                            , right here in Kafrul.
-                        </h1>
-                        <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-white/80 sm:text-lg">
-                            Play Group to SSC in English Medium, English Version and Bangla Medium, with special classes for SSC
-                            and scholarship exams and free Hifzul Quran.
-                        </p>
-                        <div className="mt-8 flex flex-wrap gap-3">
-                            <Link href="/admission/information" className="btn-sun">
-                                Admission information
-                                <ArrowUpRight className="size-4" aria-hidden="true" />
-                            </Link>
-                            <a href={school.contact.phoneHref} className="btn border border-white/30 bg-white/10 text-white backdrop-blur hover:bg-white/20">
-                                Call {school.contact.phone}
-                            </a>
-                        </div>
+            <div className="container-x flex min-h-[min(86svh,780px)] items-center pt-20 pb-28 sm:pt-24">
+                <div className="max-w-2xl">
+                    <p className="inline-flex items-center gap-2.5 rounded-full bg-white/12 px-3.5 py-1.5 text-[13.5px] font-semibold ring-1 ring-white/25">
+                        <span className="relative flex size-2">
+                            <span className="absolute inline-flex size-full animate-ping rounded-full bg-sun opacity-70 motion-reduce:hidden" />
+                            <span className="relative inline-flex size-2 rounded-full bg-sun" />
+                        </span>
+                        Admission open · {school.levels}
+                    </p>
+
+                    <h1 id="hero-title" className="mt-7 text-[2.75rem] leading-[1.02] font-semibold tracking-[-0.03em] sm:text-[4rem] lg:text-[4.6rem]">
+                        {h.heroLead}
+                        <br />
+                        <span className="relative inline-block">
+                            <span className="relative z-10">{h.heroAccent}</span>
+                            <span className="absolute inset-x-[-0.1em] bottom-[0.06em] h-[0.34em] -rotate-1 rounded-sm bg-sun/80" aria-hidden="true" />
+                        </span>
+                    </h1>
+
+                    <p className="mt-7 max-w-xl text-[17px] leading-relaxed text-white/85 sm:text-lg">{h.heroIntro}</p>
+
+                    <div className="mt-9 flex flex-wrap gap-3">
+                        <Link href="/admission/information" className="btn-marigold">
+                            Admission information
+                            <ArrowUpRight className="size-4" aria-hidden="true" />
+                        </Link>
+                        <a href={school.contact.phoneHref} className="btn border border-white/35 bg-white/10 text-white hover:bg-white/20">
+                            <Phone className="size-4" aria-hidden="true" />
+                            {school.contact.phone}
+                        </a>
                     </div>
 
-                    <ul className="hidden self-end lg:block">
-                        {stages.map((s) => (
-                            <li key={s.label} className="border-t border-white/25 first:border-t-0">
-                                <Link href={s.href} className="group flex items-end justify-between gap-6 py-5 text-white">
-                                    <span>
-                                        <span className="block text-2xl font-semibold">{s.label}</span>
-                                        <span className="mt-1 block text-[15px] text-white/70">{s.note}</span>
-                                    </span>
-                                    <span className="grid size-11 place-items-center rounded-full border border-white/30 transition-colors group-hover:border-sun group-hover:bg-sun group-hover:text-ink">
-                                        <ArrowUpRight className="size-5" aria-hidden="true" />
-                                    </span>
-                                </Link>
+                    <ul className="mt-10 flex flex-wrap gap-x-6 gap-y-3 border-t border-white/20 pt-6 text-[14.5px] font-medium">
+                        {school.mediums.map((m, i) => (
+                            <li key={m} className="flex items-center gap-2">
+                                <Flower className={`size-4 ${["text-sun", "text-coral", "text-sky"][i % 3]}`} centre="#fff" />
+                                {m}
                             </li>
                         ))}
                     </ul>
                 </div>
             </div>
 
-            {/* Mobile quick links */}
-            <ul className="mt-2 grid grid-cols-2 gap-2 lg:hidden">
-                {stages.map((s, i) => (
-                    <li key={s.label}>
-                        <Link href={s.href} className={`flex h-full flex-col justify-between gap-3 rounded-2xl p-4 ${i ? "bg-sky-soft" : "bg-coral-soft"}`}>
-                            <span className="text-[17px] font-semibold text-ink">{s.label}</span>
-                            <span className="text-[13.5px] leading-snug text-ink-soft">{s.note}</span>
-                        </Link>
-                    </li>
-                ))}
-            </ul>
+            <div className="pointer-events-none absolute right-6 bottom-20 hidden lg:block xl:right-12">
+                <Seal text={`SINCE ${school.established} · ${school.shortName.toUpperCase()} · `} className="w-32 drop-shadow-[0_12px_24px_rgba(0,0,0,.35)]" />
+            </div>
+            <p className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 rounded-full bg-paper px-4 py-2 text-[13px] font-semibold text-brand shadow-lg sm:block">
+                Govt. approved · {school.registration.label} {school.registration.code}
+            </p>
         </section>
     );
 }

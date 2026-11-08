@@ -1,14 +1,12 @@
-import About from "@/components/home/About";
 import AdmissionVisit from "@/components/home/AdmissionVisit";
 import CampusLife from "@/components/home/CampusLife";
-import Classroom from "@/components/home/Classroom";
-import FactsBand from "@/components/home/FactsBand";
-import GalleryStrip from "@/components/home/GalleryStrip";
 import Hero from "@/components/home/Hero";
-import Programs from "@/components/home/Programs";
-import SpecialityRibbon from "@/components/home/SpecialityRibbon";
+import HonoursBoard from "@/components/home/HonoursBoard";
+import Journey from "@/components/home/Journey";
+import Leadership from "@/components/home/Leadership";
+import Mediums from "@/components/home/Mediums";
 import Updates from "@/components/home/Updates";
-import WhyUs from "@/components/home/WhyUs";
+import Values from "@/components/home/Values";
 import PublicShell from "@/components/site/PublicShell";
 import { school } from "@/config/school";
 import { getAdmissionGuide, getClasses, getNews, getNotices } from "@/lib/data";
@@ -26,15 +24,13 @@ export default async function HomePage() {
         <PublicShell>
             <SchoolJsonLd />
             <Hero />
-            <SpecialityRibbon />
-            <About />
-            <FactsBand />
-            <Programs classes={classes} />
+            <Mediums />
+            <HonoursBoard />
+            <Journey classes={classes} />
+            <Values />
             <CampusLife />
-            <WhyUs />
-            <Classroom />
+            <Leadership />
             <Updates notices={notices} news={news} />
-            <GalleryStrip />
             <AdmissionVisit steps={admission.steps} />
         </PublicShell>
     );

@@ -52,8 +52,8 @@ export default function ContactPage() {
                         </div>
                     )}
                     <div className="flex gap-2.5 pt-2">
-                        <a href={school.social.facebook} target="_blank" rel="noopener noreferrer" className="btn-ghost"><FacebookIcon className="size-4" /> Facebook</a>
-                        <a href={school.social.youtube} target="_blank" rel="noopener noreferrer" className="btn-ghost"><YouTubeIcon className="size-4" /> YouTube</a>
+                        {school.social.facebook && <a href={school.social.facebook} target="_blank" rel="noopener noreferrer" className="btn-ghost"><FacebookIcon className="size-4" /> Facebook</a>}
+                        {school.social.youtube && <a href={school.social.youtube} target="_blank" rel="noopener noreferrer" className="btn-ghost"><YouTubeIcon className="size-4" /> YouTube</a>}
                     </div>
                 </div>
 

@@ -70,6 +70,8 @@ export const school = {
             knownAs: "",
             title: "Founder & Chairman",
             placeholder: true,
+            photo: "", // e.g. "/images/chairman.jpg"
+            quote: "We teach every child with care and discipline, so they come to learn and go out to serve their families, their country and their faith.",
         },
         principal: { name: "Principal's name", title: "Principal", placeholder: true },
     },
@@ -91,12 +93,55 @@ export const school = {
     },
 
     social: {
-        facebook: "", // TODO(school): Facebook page URL (page name: Little Flower International English Medium School)
+        facebook: "https://www.facebook.com/LittleFlowerInternationalEnglishMediumSchool",
         youtube: "",
     },
 
     /** No YouTube content for this school: sections that need these hide themselves. */
     videos: {},
+
+    /** Home page copy that belongs to this school (public site reads it; never hard-code it in components). */
+    home: {
+        heroLead: "Come to learn,",
+        heroAccent: "go to serve.",
+        heroIntro:
+            "Since 2000, families in Kafrul and Mirpur have trusted Little Flower from the first day of Play Group to the SSC exam: lessons finished in class, good manners every day, and free Hifzul Quran for every child who wants it.",
+        /** Honours board, as stated by the school on its admission poster. */
+        honours: [
+            { big: "18 years", text: "of 100% pass in the SSC exam" },
+            { big: "201", text: "A+ results in SSC" },
+            { big: "531", text: "students won scholarships" },
+            { big: "2009 · 2018", text: "Best school award" },
+        ],
+        honoursNote: "As recorded by the school.",
+        mediums: [
+            {
+                name: "English Medium",
+                curriculum: "Cambridge curriculum",
+                text: "For families who want an international path, with English as the language of every lesson.",
+                tone: "sun",
+            },
+            {
+                name: "English Version",
+                curriculum: "National curriculum, in English",
+                text: "The Bangladesh board syllabus taught in English, leading to the SSC exam with confidence in both languages.",
+                tone: "coral",
+            },
+            {
+                name: "Bangla Medium",
+                curriculum: "National curriculum, in Bangla",
+                text: "The board syllabus in Bangla, with the same special SSC and scholarship classes and the same care.",
+                tone: "sky",
+            },
+        ],
+        values: [
+            { title: "Free Hifzul Quran", text: "Taught free of charge alongside regular classes." },
+            { title: "Prayers on campus", text: "Zuhr and Asr are held in jamaat every school day." },
+            { title: "Learning finished in class", text: "Lessons are taught and practised in class, with regular homework and class tests." },
+            { title: "Special classes", text: "Extra classes for SSC and scholarship exams, and for students who need more help." },
+            { title: "Safe and watched over", text: "Our own building, AC classrooms and CCTV across the campus." },
+        ],
+    },
 
     specialities: [
         "Play Group to SSC",

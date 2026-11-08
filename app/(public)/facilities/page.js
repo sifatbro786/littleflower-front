@@ -15,7 +15,7 @@ export default async function FacilitiesPage() {
     const facilities = await getFacilities();
     return (
         <>
-            <PageHeader title="Facilities" summary="A comfortable, colourful campus made for little learners." image={img.footballTeams} crumbs={[{ label: "Facilities" }]} />
+            <PageHeader title="Facilities" summary="Cool classrooms, a safe campus and room to learn, play and pray." image={img.footballTeams} crumbs={[{ label: "Facilities" }]} />
             <div className="container-x py-14 lg:py-20">
                 <ul className="space-y-6">
                     {facilities.map((f, i) => {

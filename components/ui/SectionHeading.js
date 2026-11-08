@@ -1,4 +1,4 @@
-import { Sparkle } from "./Decor";
+import { Flower } from "./Decor";
 
 /** Eyebrow + title + optional intro. `align` center|left. */
 export default function SectionHeading({ eyebrow, title, intro, align = "left", tone = "light", className = "" }) {
@@ -8,7 +8,7 @@ export default function SectionHeading({ eyebrow, title, intro, align = "left", 
         <div className={`${center ? "mx-auto text-center" : ""} max-w-2xl ${className}`}>
             {eyebrow && (
                 <p className={`eyebrow ${dark ? "text-sun" : ""} ${center ? "justify-center" : ""}`}>
-                    <Sparkle className="size-3.5" />
+                    <Flower className="size-4 text-coral" />
                     {eyebrow}
                 </p>
             )}

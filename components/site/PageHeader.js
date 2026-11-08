@@ -1,31 +1,38 @@
 import Link from "next/link";
 
+import { Flower } from "../ui/Decor";
 import Photo from "../ui/Photo";
-import { Sparkle } from "../ui/Decor";
+
+const tones = {
+    brand: { bg: "bg-brand-soft", flower: "text-brand" },
+    sun: { bg: "bg-sun-soft", flower: "text-sun" },
+    sky: { bg: "bg-sky-soft", flower: "text-sky" },
+    coral: { bg: "bg-coral-soft", flower: "text-coral" },
+};
 
 /**
- * Inner-page header: breadcrumb, title, summary, optional photo panel.
+ * Inner-page header: breadcrumb, title, summary, optional framed photo.
  * @param {{ title: string, summary?: string, crumbs?: {label:string, href?:string}[], image?: import("@/lib/data/types").ImageRef, tone?: "brand"|"sun"|"sky"|"coral" }} props
  */
 export default function PageHeader({ title, summary, crumbs = [], image, tone = "brand" }) {
-    const toneBg = { brand: "bg-brand-soft", sun: "bg-sun-soft", sky: "bg-sky-soft", coral: "bg-coral-soft" }[tone];
+    const t = tones[tone] ?? tones.brand;
     return (
-        <section className={`relative overflow-hidden ${toneBg}`}>
-            <div className="dot-grid absolute inset-y-0 right-0 w-1/2 opacity-60 [mask-image:linear-gradient(90deg,transparent,#000)]" aria-hidden="true" />
-            <div className={`container-x relative grid gap-8 py-10 sm:py-14 ${image ? "lg:grid-cols-[1.15fr_1fr] lg:items-center" : ""}`}>
-                <div>
+        <section className={`relative overflow-hidden ${t.bg}`}>
+            <Flower className={`absolute -right-16 -bottom-20 size-72 opacity-[0.07] ${t.flower}`} centre="transparent" />
+            <div className={`container-x relative grid gap-10 py-12 sm:py-16 ${image ? "lg:grid-cols-[1.1fr_0.9fr] lg:items-center" : ""}`}>
+                <div className="pb-1">
                     <nav aria-label="Breadcrumb">
                         <ol className="flex flex-wrap items-center gap-1.5 text-[13.5px] text-ink-soft">
                             <li>
-                                <Link href="/" className="hover:text-brand">Home</Link>
+                                <Link href="/" className="hover:text-ink">Home</Link>
                             </li>
                             {crumbs.map((c) => (
                                 <li key={c.label} className="flex items-center gap-1.5">
-                                    <span aria-hidden="true">/</span>
+                                    <Flower className="size-2.5 text-coral" centre="var(--coral)" />
                                     {c.href ? (
-                                        <Link href={c.href} className="hover:text-brand">{c.label}</Link>
+                                        <Link href={c.href} className="hover:text-ink">{c.label}</Link>
                                     ) : (
-                                        <span className="text-ink" aria-current="page">{c.label}</span>
+                                        <span className="font-medium text-ink" aria-current="page">{c.label}</span>
                                     )}
                                 </li>
                             ))}
@@ -35,11 +42,10 @@ export default function PageHeader({ title, summary, crumbs = [], image, tone = 
                     {summary && <p className="mt-4 max-w-2xl text-[17.5px] leading-relaxed text-ink-soft">{summary}</p>}
                 </div>
                 {image && (
-                    <div className="relative hidden lg:block">
-                        <div className="relative aspect-[4/3] overflow-hidden rounded-[1.75rem] border-[6px] border-white shadow-[0_24px_50px_-24px_rgba(21,36,27,.45)]">
-                            <Photo image={image} fill ratio={4 / 3} sizes="(min-width:1024px) 520px, 1px" priority />
+                    <div className="relative hidden justify-self-end lg:block">
+                        <div className="frame-arch relative aspect-[4/3] w-[27rem] overflow-hidden ring-8 ring-white shadow-[0_30px_60px_-34px_rgba(46,27,16,.55)]">
+                            <Photo image={image} fill ratio={4 / 3} sizes="(min-width:1024px) 432px, 1px" priority />
                         </div>
-                        <Sparkle className="absolute -top-4 -left-4 size-9 text-sun" />
                     </div>
                 )}
             </div>

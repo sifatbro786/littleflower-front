@@ -51,7 +51,7 @@ async function AboutContent({ params }) {
                 <SideNav title={`About ${school.shortName}`} items={aboutNav} current={`/about/${slug}`} />
                 <article className="max-w-3xl">
                     {isChairman && school.videos.chairmanTalk && (
-                        <div className="mb-10 rounded-[1.4rem] bg-white p-2 shadow-[0_24px_50px_-28px_rgba(21,36,27,.45)]">
+                        <div className="mb-10 rounded-[1.4rem] bg-white p-2 shadow-[0_24px_50px_-28px_rgba(46,27,16,.45)]">
                             <LiteYouTube id={school.videos.chairmanTalk.id} title={school.videos.chairmanTalk.title} className="rounded-[1rem]" />
                         </div>
                     )}

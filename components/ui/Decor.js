@@ -73,3 +73,40 @@ export function Tape({ className = "", tone = "sun" }) {
     const c = { sun: "bg-sun/80", sky: "bg-sky/60", coral: "bg-coral/60", brand: "bg-brand/50" }[tone];
     return <span aria-hidden="true" className={`absolute h-6 w-20 ${c} shadow-sm ${className}`} />;
 }
+
+/**
+ * The little flower: five round petals around a centre. Little Flower's signature mark,
+ * used as bullets, section marks and the founding seal. Colours follow currentColor + `centre`.
+ */
+export function Flower({ className = "", centre = "var(--sun)" }) {
+    return (
+        <svg viewBox="0 0 40 40" className={className} aria-hidden="true">
+            <g fill="currentColor">
+                {[0, 72, 144, 216, 288].map((r) => (
+                    <ellipse key={r} cx="20" cy="10.5" rx="6.6" ry="9" transform={`rotate(${r} 20 20)`} />
+                ))}
+            </g>
+            <circle cx="20" cy="20" r="5.4" fill={centre} />
+        </svg>
+    );
+}
+
+/** Round founding seal: text on a circle around the flower. Static (no spin). */
+export function Seal({ text, className = "" }) {
+    const id = `seal-${useId().replace(/[^a-zA-Z0-9]/g, "")}`;
+    return (
+        <div className={`grid aspect-square place-items-center ${className.includes("absolute") ? "" : "relative"} ${className}`} aria-hidden="true">
+            <svg viewBox="0 0 200 200" className="absolute inset-0 size-full">
+                <circle cx="100" cy="100" r="98" fill="var(--paper)" />
+                <circle cx="100" cy="100" r="90" fill="none" stroke="var(--brand)" strokeWidth="2" />
+                <defs>
+                    <path id={id} d="M100,100 m-70,0 a70,70 0 1,1 140,0 a70,70 0 1,1 -140,0" />
+                </defs>
+                <text fill="var(--brand)" fontSize="16" fontWeight="700" letterSpacing="4.2">
+                    <textPath href={`#${id}`}>{text}</textPath>
+                </text>
+            </svg>
+            <Flower className="relative size-[38%] text-coral" />
+        </div>
+    );
+}

@@ -47,7 +47,7 @@ async function AcademicsContent({ params }) {
                 <article className="min-w-0">
                     <RichText html={page.bodyHtml} className="max-w-3xl" />
                     {slug === "classes" && <ClassList />}
-                    {slug === "curriculum" && <Worksheets />}
+                    {slug === "curriculum" && <ClassroomPhotos />}
                     {slug === "activities" && <ActivityPhotos />}
                     <HelpStrip className="mt-14" title={slug === "fees" ? "Call the office for the current fee chart." : undefined} />
                 </article>
@@ -97,12 +97,12 @@ async function ClassList() {
     );
 }
 
-function Worksheets() {
-    const sheets = [img.drawingBoys, img.girlWriting, img.drawingCloseup];
+function ClassroomPhotos() {
+    const sheets = [img.smartClass, img.girlWriting, img.drawingCloseup];
     return (
         <ul className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3">
             {sheets.map((s, i) => (
-                <li key={s.src} className={`overflow-hidden rounded-lg border-4 border-white bg-white shadow-[0_18px_36px_-20px_rgba(21,36,27,.5)] `}>
+                <li key={s.src} className={`overflow-hidden rounded-lg border-4 border-white bg-white shadow-[0_18px_36px_-20px_rgba(46,27,16,.5)]`}>
                     <Photo image={s} sizes="(min-width:640px) 260px, 50vw" className="h-auto w-full" />
                 </li>
             ))}
