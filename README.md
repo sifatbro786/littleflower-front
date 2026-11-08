@@ -1,22 +1,28 @@
-# Greendale English Version School — web (Next.js)
+# Little Flower International English Medium School — web (Next.js)
 
-Public site (Phase 1). Later phases add `/admin`, `/portal` and the Express API (see PRD).
+One Next.js app: public website, `/admin` (admin + teacher by role) and `/portal` (student/guardian).
+Built on STR Solutions' school platform (first install: Greendale). API: `littleflower-back`.
 
 ```bash
 npm install
-cp .env.example .env.local   # fill SMTP_* and CONTACT_TO for the contact form
+cp .env.example .env.local
+# demo (Vercel client preview): DATA_MODE=demo, no backend needed
+# live (local dev + VPS): DATA_MODE=live, API_INTERNAL_URL=http://127.0.0.1:4020 and littleflower-back running
 npm run dev                  # http://localhost:3000
 npm run build && npm start   # production (PM2 on the VPS runs `next start -p 3000`)
 ```
 
 ## Rules (do not break)
-- **School identity lives in `config/school.js`** (name, contact, colours, nav, videos). No school-specific values in components.
-- **Pages never import `/content`.** They call `lib/data/*` (`'use cache'` + `cacheTag`). Phase 2 only changes the inside of those functions to `fetch(API_INTERNAL_URL + '/api/public/...')`.
+- **School identity lives in `config/school.js`** (slug, name, contact, colours, nav). No school-specific values in components.
+  `school.slug` must equal the API's `APP_SLUG` (auth cookie names `<slug>_at` / `<slug>_rt`).
+- **Pages never import `/content`.** They call `lib/data/*`; demo mode reads `/content`, live mode calls `/api/public/*`.
 - Shapes are documented in `lib/data/types.js` (JSDoc). JavaScript only, no TypeScript.
-- Images: `public/images`, videos: `public/videos` (compressed, faststart). Phase 2 moves editable media to `/var/www/greendale/uploads/public`.
-- Font: Google Sans, self-hosted in `app/fonts` (OFL) so builds never need fonts.googleapis.com.
-- Next 16 with `cacheComponents` + `partialPrefetching`: `params` is a Promise; no `dynamicParams`; dynamic routes use `generateStaticParams`.
+- The frontend never sends email. Demo: `app/api/contact` validates and answers without sending.
+  Live: `/api/contact` goes to Express, which stores the message and emails through the queue.
+- Images: `public/images`, videos: `public/videos` (720p H.264, faststart). CMS uploads live in `/var/www/littleflower/uploads/public`.
+- Font: Google Sans, self-hosted in `app/fonts` (OFL).
+- Next 16 with `cacheComponents` + `partialPrefetching`: `params` is a Promise; dynamic routes use `generateStaticParams`.
 
 ## Deploy
-- Now: Vercel (set `NEXT_PUBLIC_SITE_URL`, SMTP vars). Previews are `noindex` via `app/robots.js`.
-- Later: VPS + PM2 + Nginx exactly as PRD §12 (never `output: 'export'`).
+- Client preview: Vercel at https://littleflower-school.vercel.app with `DATA_MODE=demo`, `NEXT_PUBLIC_SITE_URL`, `SESSION_SECRET` (32+ chars). Demo is `noindex`.
+- Launch: VPS + PM2 + Nginx at https://littleflowerintschool.com, see `littleflower-back/docs/DEPLOY.md` (never `output: 'export'`).

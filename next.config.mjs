@@ -6,7 +6,7 @@ const DATA_MODE = process.env.DATA_MODE || "demo";
 if (!["demo", "live"].includes(DATA_MODE)) throw new Error(`DATA_MODE must be "demo" or "live" (got "${DATA_MODE}")`);
 const API_INTERNAL_URL = (process.env.API_INTERNAL_URL || "").replace(/\/+$/, "");
 if (DATA_MODE === "live" && !/^https?:\/\/[^/]+$/.test(API_INTERNAL_URL)) {
-    throw new Error("DATA_MODE=live needs API_INTERNAL_URL, e.g. http://127.0.0.1:4000 (no /api, no trailing slash)");
+    throw new Error("DATA_MODE=live needs API_INTERNAL_URL, e.g. http://127.0.0.1:4020 (no /api, no trailing slash)");
 }
 
 /** @type {import('next').NextConfig} */
@@ -28,7 +28,7 @@ const nextConfig = {
         remotePatterns: [{ protocol: "https", hostname: "i.ytimg.com", pathname: "/vi/**" }],
     },
     /**
-     * Live mode: /api/* belongs to Express. On the VPS Nginx routes /api to :4000 before Next sees it;
+     * Live mode: /api/* belongs to Express. On the VPS Nginx routes /api to :4020 before Next sees it;
      * locally (no Nginx) this rewrite does the same, bypassing the demo handlers in app/api.
      */
     async rewrites() {
