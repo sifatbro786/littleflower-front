@@ -1,5 +1,6 @@
 import { HandCoins, MessageSquareText } from "lucide-react";
 import Link from "next/link";
+import { connection } from "next/server";
 
 import { school } from "@/config/school";
 import { BarChart, ShareBars } from "@/components/dash/charts";
@@ -21,12 +22,13 @@ export const instant = false;
 
 export default async function FeesPage() {
     const user = await requirePermission("fees.view");
+    await connection(); // "this month" below must be computed per request, never at prerender
     const [sum, dues, structure, sections, sessions] = await Promise.all([feeSummary(), dueList(), feeStructure(), listSectionOptions(), listSessions()]);
     const current = sessions.find((x) => x.isCurrent) ?? sessions[0];
     const month = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Dhaka" }).format(new Date()).slice(0, 7);
     const tuitionRow = structure.find((c) => c.className === "Class I") ?? structure[0];
     const tuition = tuitionRow?.heads.find((h) => h.type === "MONTHLY")?.amount ?? 0;
-    const classes = [...new Map(sections.map((s) => [s.classId, s.label.replace(" (A)", "")])).entries()].map(([value, label]) => ({ value, label }));
+    const classes = [...new Map(sections.map((s) => [s.classId, s.label.replace(/ \([^)]*\)$/, "")])).entries()].map(([value, label]) => ({ value, label }));
 
     return (
         <>

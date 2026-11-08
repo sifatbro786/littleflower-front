@@ -4,6 +4,7 @@ import { Loader2, Save } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
+import { school } from "@/config/school";
 import { api } from "@/lib/api/client";
 
 import { errorText, field, fieldBorder, hint, label } from "../admin/fields";
@@ -93,7 +94,7 @@ export default function SettingsForm({ initial, brand, demo = false }) {
                             <span className={hint}>Signs every SMS.</span>
                         </label>
                         <label>
-                            <span className={label}>EIIN</span>
+                            <span className={label}>{school.registration?.label ?? "EIIN"} code</span>
                             <input value={p.eiin ?? ""} onChange={(e) => setProfile("eiin", e.target.value)} className={`${field} ${fieldBorder(false)}`} />
                         </label>
                         <label>

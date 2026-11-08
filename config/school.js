@@ -39,6 +39,8 @@ export const school = {
     registration: { label: "EMIS", code: "310071577" },
     levels: "Play Group to SSC",
     mediums: ["English Medium", "English Version", "Bangla Medium"],
+    /** Sections pre-filled when an admin adds a new class (one per medium here). */
+    defaultSections: ["English Medium", "English Version", "Bangla Medium"],
     locality: "Kafrul, Mirpur, Dhaka",
     /** JSON-LD @type for the home page */
     schemaType: "School",

@@ -19,7 +19,7 @@ export default function Hero() {
             <div className="absolute inset-0 -z-10 bg-brand-deep/55" aria-hidden="true" />
             <div className="absolute inset-0 -z-10 bg-linear-to-r from-brand-deep/90 via-brand-deep/60 to-transparent" aria-hidden="true" />
 
-            <div className="container-x flex min-h-[min(86svh,780px)] items-center pt-20 pb-28 sm:pt-24">
+            <div className="container-x flex min-h-[min(calc(100svh-9.75rem),720px)] items-center pt-12 pb-20 sm:pt-14 lg:pb-24">
                 <div className="max-w-2xl">
                     <p className="inline-flex items-center gap-2.5 rounded-full bg-white/12 px-3.5 py-1.5 text-[13.5px] font-semibold ring-1 ring-white/25">
                         <span className="relative flex size-2">
@@ -29,7 +29,7 @@ export default function Hero() {
                         Admission open · {school.levels}
                     </p>
 
-                    <h1 id="hero-title" className="mt-7 text-[2.75rem] leading-[1.02] font-semibold tracking-[-0.03em] sm:text-[4rem] lg:text-[4.6rem]">
+                    <h1 id="hero-title" className="mt-5 text-[2.6rem] leading-[1.03] font-semibold tracking-[-0.03em] sm:text-[3.4rem] lg:text-[3.9rem]">
                         {h.heroLead}
                         <br />
                         <span className="relative inline-block">
@@ -38,9 +38,9 @@ export default function Hero() {
                         </span>
                     </h1>
 
-                    <p className="mt-7 max-w-xl text-[17px] leading-relaxed text-white/85 sm:text-lg">{h.heroIntro}</p>
+                    <p className="mt-5 max-w-lg text-[16px] leading-relaxed text-white/85 sm:text-[17px]">{h.heroIntro}</p>
 
-                    <div className="mt-9 flex flex-wrap gap-3">
+                    <div className="mt-7 flex flex-wrap gap-3">
                         <Link href="/admission/information" className="btn-marigold">
                             Admission information
                             <ArrowUpRight className="size-4" aria-hidden="true" />
@@ -51,7 +51,7 @@ export default function Hero() {
                         </a>
                     </div>
 
-                    <ul className="mt-10 flex flex-wrap gap-x-6 gap-y-3 border-t border-white/20 pt-6 text-[14.5px] font-medium">
+                    <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2.5 border-t border-white/20 pt-5 text-[14px] font-medium [@media(min-width:1024px)_and_(max-height:680px)]:hidden">
                         {school.mediums.map((m, i) => (
                             <li key={m} className="flex items-center gap-2">
                                 <Flower className={`size-4 ${["text-sun", "text-coral", "text-sky"][i % 3]}`} centre="#fff" />
@@ -62,12 +62,9 @@ export default function Hero() {
                 </div>
             </div>
 
-            <div className="pointer-events-none absolute right-6 bottom-20 hidden lg:block xl:right-12">
-                <Seal text={`SINCE ${school.established} · ${school.shortName.toUpperCase()} · `} className="w-32 drop-shadow-[0_12px_24px_rgba(0,0,0,.35)]" />
+            <div className="pointer-events-none absolute right-6 bottom-24 hidden lg:block xl:right-12">
+                <Seal text={`SINCE ${school.established} · ${school.shortName.toUpperCase()} · `} className="w-28 drop-shadow-[0_12px_24px_rgba(0,0,0,.35)]" />
             </div>
-            <p className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 rounded-full bg-paper px-4 py-2 text-[13px] font-semibold text-brand shadow-lg sm:block">
-                Govt. approved · {school.registration.label} {school.registration.code}
-            </p>
         </section>
     );
 }

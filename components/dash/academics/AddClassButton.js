@@ -4,6 +4,8 @@ import { Plus } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
+import { school } from "@/config/school";
+
 import { field, fieldBorder, hint, label } from "../admin/fields";
 import Modal from "../Modal";
 import { useApiAction } from "./useApiAction";
@@ -13,7 +15,7 @@ export default function AddClassButton({ demo = false }) {
     const router = useRouter();
     const { busy, run } = useApiAction({ demo });
     const [open, setOpen] = useState(false);
-    const [v, setV] = useState({ name: "", stage: "primary", gradingMode: "MARKS", sections: "A" });
+    const [v, setV] = useState({ name: "", stage: "primary", gradingMode: "MARKS", sections: (school.defaultSections ?? ["A"]).join(", ") });
     const set = (k) => (e) => setV((s) => ({ ...s, [k]: e.target.value }));
     async function create() {
         const sections = v.sections
