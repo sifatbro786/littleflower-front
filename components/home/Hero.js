@@ -16,8 +16,8 @@ export default function Hero() {
     return (
         <section className="relative isolate overflow-hidden bg-brand-deep text-white" aria-labelledby="hero-title">
             <HeroVideo src={video.hero.src} poster={video.hero.poster} label={`${school.name} campus`} />
-            <div className="absolute inset-0 -z-10 bg-brand-deep/55" aria-hidden="true" />
-            <div className="absolute inset-0 -z-10 bg-linear-to-r from-brand-deep/90 via-brand-deep/60 to-transparent" aria-hidden="true" />
+            <div className="absolute inset-0 -z-10 bg-brand-deep/35" aria-hidden="true" />
+            <div className="absolute inset-0 -z-10 bg-linear-to-r from-brand-deep/75 via-brand-deep/40 to-transparent" aria-hidden="true" />
 
             <div className="container-x flex min-h-[min(calc(100svh-9.75rem),720px)] items-center pt-12 pb-20 sm:pt-14 lg:pb-24">
                 <div className="max-w-2xl">

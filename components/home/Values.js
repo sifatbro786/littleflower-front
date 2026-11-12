@@ -12,16 +12,20 @@ export default function Values() {
     return (
         <section className="bg-leaf-soft/60 py-20 sm:py-28" aria-labelledby="values-title">
             <div className="container-x grid items-center gap-14 lg:grid-cols-[1fr_1.1fr]">
-                <div className="relative order-2 mx-auto w-full max-w-lg lg:order-1">
-                    <div className="relative aspect-[4/5] w-[78%] overflow-hidden rounded-[1.5rem] shadow-[0_30px_60px_-34px_rgba(46,27,16,.55)]">
-                        <Photo image={img.girlWriting} fill ratio={4 / 5} sizes="(min-width:1024px) 380px, 75vw" />
+                <figure className="relative mx-auto w-full max-w-xl pb-10">
+                    <div className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem] ring-8 ring-white shadow-[0_34px_70px_-36px_rgba(46,27,16,.6)]">
+                        <Photo image={img.quranPrizeDay} fill ratio={4 / 3} sizes="(min-width:1024px) 560px, 92vw" />
                     </div>
-                    <div className="absolute right-0 bottom-[-8%] aspect-square w-[50%] overflow-hidden rounded-full border-8 border-paper shadow-[0_20px_40px_-24px_rgba(46,27,16,.6)]">
-                        <Photo image={img.classWriting} fill ratio={1} sizes="(min-width:1024px) 250px, 50vw" />
+                    <div className="absolute -right-2 bottom-0 aspect-square w-[34%] overflow-hidden rounded-full border-8 border-paper shadow-[0_20px_40px_-24px_rgba(46,27,16,.6)] sm:-right-6">
+                        <Photo image={img.girlWriting} fill ratio={1} sizes="(min-width:1024px) 190px, 34vw" />
                     </div>
-                </div>
+                    <figcaption className="mt-4 flex max-w-[62%] items-center gap-2 text-[14px] font-medium text-ink-soft">
+                        <Flower className="size-4 shrink-0 text-coral" centre="var(--sun)" />
+                        Our young Quran learners, honoured by their teachers.
+                    </figcaption>
+                </figure>
 
-                <div className="order-1 lg:order-2">
+                <div>
                     <SectionHeading eyebrow="What we promise parents" title={<span id="values-title">Good results, good manners, and faith at the heart of the day</span>} />
                     <ul className="ruled mt-9 rounded-[1.25rem] border border-line pt-[2.25rem] pr-5 pb-[1.125rem] pl-14 text-[15.5px] shadow-[0_18px_40px_-30px_rgba(46,27,16,.45)]">
                         {items.map((v) => (
