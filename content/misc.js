@@ -1,12 +1,20 @@
-import { img } from "./media";
+import { img, teacherPhoto } from "./media";
 
 /**
  * Teachers & staff. Live mode: Staff where showOnWebsite = true, ordered.
- * TODO(school): teacher list with name, designation, qualification and photo.
- * Left empty on purpose: the site shows a friendly empty state instead of invented people.
+ * Source: list and portraits sent by the school, Nov 2026. Seeded create-if-missing by name;
+ * after launch edit in Admin > Staff (photo, order, "show on website").
  * @type {import("@/lib/data/types").Staff[]}
  */
-export const staff = [];
+export const staff = [
+    { id: "t-sabira", name: "Dr. Sabira Sultana", designation: "Vice Principal (English Version & English Medium)", qualification: "PhD, Jahangirnagar University", photo: teacherPhoto("sabira-sultana"), group: "teacher", order: 1 },
+    { id: "t-tamanna", name: "Tamanna Ishita", designation: "Teacher", qualification: "BSc in Applied Physics, Tejgaon College", photo: teacherPhoto("tamanna-ishita"), group: "teacher", order: 2 },
+    { id: "t-romena", name: "Romena Afroz", designation: "Teacher", qualification: "MA in Social Welfare, Jagannath University", photo: teacherPhoto("romena-afroz"), group: "teacher", order: 3 },
+    { id: "t-fouzia", name: "Fouzia Akther", designation: "Teacher", qualification: "MSS in Public Administration, University of Chittagong", photo: teacherPhoto("fouzia-akther"), group: "teacher", order: 4 },
+    { id: "t-tanzum", name: "Tanzum Tahsin Tanisha", designation: "Teacher", qualification: "O Level, Academia; BSc in Biochemistry (studying)", photo: teacherPhoto("tanzum-tahsin-tanisha"), group: "teacher", order: 5 },
+    { id: "t-prokriti", name: "Prokriti Hasan Rodushi", designation: "Teacher", qualification: "BSc in CSE; MBA, University of Dhaka", photo: teacherPhoto("prokriti-hasan-rodushi"), group: "teacher", order: 6 },
+    { id: "t-sheuly", name: "Sheuly Akter", designation: "Teacher", qualification: "BBA & MBA in Finance & Banking, Lalmatia Government Women's College (National University)", photo: teacherPhoto("sheuly-akter"), group: "teacher", order: 7 },
+];
 
 /**
  * Facilities. Only what the school states on its posters plus what the photos show.

@@ -27,10 +27,25 @@ export const img = {
     redDay: { src: "/images/red-day.jpg", width: 1280, height: 851, alt: "Students and teachers dressed in red for a colour day celebration" },
     posterBn: { src: "/images/admission-poster-bn.jpg", width: 1008, height: 1411, alt: "Bangla admission poster of Little Flower International School" },
     poster2027: { src: "/images/admission-poster-2027.jpg", width: 1254, height: 1254, alt: "Admission Open 2027 poster: Play Group to O Level and SSC, Cambridge curriculum, free Hifzul Quran" },
+    // November 2026 batch from the school
+    partyDay: { src: "/images/party-day.jpg", width: 1152, height: 864, alt: "Students in party clothes and costumes with their teachers under balloons" },
+    solarSystemArt: { src: "/images/solar-system-art.jpg", width: 1200, height: 1600, alt: "Four students holding up their solar system paintings in front of the painted mural" },
+    craftDisplay: { src: "/images/craft-display.jpg", width: 1600, height: 1200, alt: "A class holding up paper fans, paper dolls and solar system projects" },
+    clayModel: { src: "/images/clay-model.jpg", width: 1350, height: 1800, alt: "A smiling boy showing the little clay model he made" },
+    footballJerseys: { src: "/images/football-jerseys.jpg", width: 1600, height: 1200, alt: "Boys lined up on the rooftop in Argentina and Brazil football jerseys" },
+    quranReadingBoy: { src: "/images/quran-reading-boy.jpg", width: 1197, height: 1600, alt: "A boy in a white cap reading the Holy Quran in class" },
+    quranReadingGirl: { src: "/images/quran-reading-girl.jpg", width: 1197, height: 1600, alt: "A girl in a white hijab reading the Holy Quran in class" },
+    prizeGivingTeachers: { src: "/images/prize-giving-teachers.jpg", width: 1280, height: 960, alt: "Little Flower teachers together at the Annual Prize Giving Ceremony" },
 };
 
 export const video = {
     hero: { src: "/videos/hero.mp4", poster: "/videos/hero-poster.jpg" },
     campusTour: { src: "/videos/campus-tour.mp4", poster: "/videos/campus-tour-poster.jpg" },
     admissionPromo: { src: "/videos/admission-promo.mp4", poster: "/videos/admission-promo-poster.jpg" },
+    playroom: { src: "/videos/playroom.mp4", poster: "/videos/playroom-poster.jpg" },
+    partyDay: { src: "/videos/party-day.mp4", poster: "/videos/party-day-poster.jpg" },
+    dancePerformance: { src: "/videos/dance-performance.mp4", poster: "/videos/dance-performance-poster.jpg" },
 };
+
+/** Teacher portraits (720x960, 3:4). Referenced by staff in misc.js and by Staff.photoPath in the DB. */
+export const teacherPhoto = (slug) => `/images/teachers/${slug}.jpg`;

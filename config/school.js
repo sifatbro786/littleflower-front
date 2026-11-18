@@ -204,7 +204,7 @@ export const navigation = [
             { label: "Curriculum & Approach", href: "/academics/curriculum" },
             { label: "Activities", href: "/academics/activities" },
             { label: "Fees Structure", href: "/academics/fees" },
-            { label: "Teachers & Staff", href: "/teachers" },
+            { label: "Our Teachers", href: "/teachers" },
         ],
     },
     {

@@ -7,6 +7,33 @@ import { img, video } from "./media";
  */
 export const albums = [
     {
+        id: "a-science-craft",
+        slug: "solar-system-and-craft",
+        title: "Solar system & craft projects",
+        description: "Painted planets, paper fans, paper dolls and clay models made in class.",
+        date: "2026-11-10",
+        cover: img.solarSystemArt,
+        images: [img.solarSystemArt, img.craftDisplay, img.clayModel],
+    },
+    {
+        id: "a-quran",
+        slug: "quran-learning",
+        title: "Quran learning",
+        description: "Daily Quran reading in class, with Hifzul Quran for those who want it.",
+        date: "2026-11-05",
+        cover: img.quranReadingGirl,
+        images: [img.quranReadingGirl, img.quranReadingBoy, img.quranPrizeDay],
+    },
+    {
+        id: "a-fun-day",
+        slug: "party-and-fun-days",
+        title: "Party & fun days",
+        description: "Dress-up parties, favourite football jerseys and lots of smiles.",
+        date: "2026-10-25",
+        cover: img.partyDay,
+        images: [img.partyDay, img.footballJerseys, img.prizeGivingTeachers],
+    },
+    {
         id: "a-prize-giving",
         slug: "prize-giving-ceremony",
         title: "Prize giving ceremony",
@@ -66,4 +93,7 @@ export const albums = [
 export const videos = [
     { id: "v-campus", title: "A walk to our campus", kind: "file", ...video.campusTour, orientation: "landscape" },
     { id: "v-admission", title: "Admission is open", kind: "file", ...video.admissionPromo, orientation: "landscape" },
+    { id: "v-playroom", title: "Slides and see-saws in the playroom", kind: "file", ...video.playroom, orientation: "portrait" },
+    { id: "v-party-day", title: "Party day in class", kind: "file", ...video.partyDay, orientation: "portrait" },
+    { id: "v-dance", title: "Dance performance", kind: "file", ...video.dancePerformance, orientation: "portrait" },
 ];

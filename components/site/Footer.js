@@ -15,7 +15,7 @@ const columns = [
             { label: "Chairman's Message", href: "/about/chairman-message" },
             { label: "Vision & Mission", href: "/about/vision-mission" },
             { label: "Facilities", href: "/facilities" },
-            { label: "Teachers & Staff", href: "/teachers" },
+            { label: "Our Teachers", href: "/teachers" },
         ],
     },
     {
